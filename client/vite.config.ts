@@ -7,7 +7,11 @@ export default defineConfig(({ mode }) => {
   // Load env file based on `mode` in the current working directory.
   const env = loadEnv(mode, process.cwd(), '');
   
+  // Set base path for GitHub Pages
+  const base = mode === 'production' ? '/KCCustomerPortal/' : '/';
+  
   return {
+    base,
     plugins: [react()],
     resolve: {
       alias: {
