@@ -37,14 +37,22 @@ const GlassCard = styled(Box)({
 const PrimaryBtn = styled(Button)({ background: '#2563EB', color: '#fff', padding: '14px 36px', borderRadius: '50px', textTransform: 'none', fontWeight: 700, fontSize: '1rem', boxShadow: '0 8px 32px rgba(37,99,235,.4)', transition: 'all .3s', '&:hover': { background: '#1d4ed8', boxShadow: '0 12px 40px rgba(37,99,235,.55)', transform: 'translateY(-2px)' } });
 const OutlineBtn = styled(Button)({ color: '#00B4D8', border: '2px solid rgba(0,180,216,.5)', padding: '12px 32px', borderRadius: '50px', textTransform: 'none', fontWeight: 600, fontSize: '1rem', transition: 'all .3s', '&:hover': { border: '2px solid #00B4D8', background: 'rgba(0,180,216,.1)', transform: 'translateY(-2px)' } });
 
+type Telescope = { band: string; spec: string; color: string; icon: JSX.Element; desc: string; science: string[] };
+const telescopes: Telescope[] = [
+  { band: 'OPTICAL', spec: '120mm f/7.5 Refractor', color: '#00B4D8', icon: <Visibility />, desc: 'Scientific-grade optical imaging for asteroid tracking, satellite monitoring, and stellar photometry. Sub-arcsecond pointing accuracy.', science: ['Asteroid & NEO Tracking', 'Stellar Photometry', 'Satellite Monitoring', 'Exoplanet Transits'] },
+  { band: 'UV / NIR', spec: 'Ultraviolet & Near-Infrared', color: '#9D4EDD', icon: <Radar />, desc: 'UV and near-infrared channels reveal hot stellar populations, active galactic nuclei, and near-Earth object composition.', science: ['Hot Stellar Populations', 'Active Galactic Nuclei', 'NEO Composition', 'Star-Forming Regions'] },
+  { band: 'X-RAY', spec: 'Soft X-Ray Detector', color: '#F59E0B', icon: <Speed />, desc: 'Detects X-ray transients, pulsar timing, and high-energy astrophysical events invisible to ground-based observatories.', science: ['X-Ray Transients', 'Pulsar Timing', 'Black Hole Activity', 'Neutron Star Events'] },
+  { band: 'GAMMA', spec: 'Gamma-Ray Burst Monitor', color: '#EF4444', icon: <Shield />, desc: 'Real-time GRB detection and localisation — enabling rapid follow-up observations within seconds of a burst trigger.', science: ['GRB Detection', 'Rapid Localisation', 'Afterglow Monitoring', 'Cosmological Events'] },
+];
+
 type Cap = { icon: JSX.Element; title: string; desc: string };
 const capabilities: Cap[] = [
-  { icon: <Satellite />, title: '6U–12U CubeSat Multi-Spectral', desc: 'Optical 120mm · UV/NIR · X-Ray · Gamma-Ray detection — comprehensive multi-spectral coverage from low Earth orbit.' },
   { icon: <Shield />, title: 'SSA & Planetary Defense', desc: 'Autonomous tracking of satellites, debris, fast-movers, and anomalies. Real-time GRB, CME, and solar-flare alerts.' },
-  { icon: <Radar />, title: 'AI Detection & Enhancement', desc: 'High-performance AI identifies satellites and debris in noisy images, then reconstructs sharper visuals without expensive sensors.' },
-  { icon: <School />, title: 'Education & Outreach', desc: 'Every school can access a live telescope in space. Curriculum-aligned, teacher-guided, assessment-ready.' },
+  { icon: <Radar />, title: 'AI Detection & Enhancement', desc: 'High-performance AI identifies resident space objects in noisy imagery, then reconstructs sharper visuals for maximum scientific yield.' },
+  { icon: <School />, title: 'Education & Outreach', desc: 'Every school can access a live telescope in space. Curriculum-aligned, teacher-guided, assessment-ready for STEM programs.' },
   { icon: <Visibility />, title: 'Multi-Platform Delivery', desc: 'Web/App Dashboard · Free-Roam VR 360° · Immersive Planetarium Dome — one satellite, every screen.' },
   { icon: <Cloud />, title: 'AWS-Powered Infrastructure', desc: 'Operation Centre on AWS · NOaaS data lake · Global Ground Station Network for real-time downlink.' },
+  { icon: <Public />, title: 'Open Science Data', desc: 'Calibrated FITS data delivered to researchers, students, and institutions within minutes of each observation pass.' },
 ];
 
 type Problem = { num: string; title: string; desc: string };
@@ -174,13 +182,44 @@ const Home: FC = () => {
         </Container>
       </Box>
 
-      {/* SOLUTION */}
+      {/* TELESCOPES */}
       <Box sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 }, background: 'rgba(255,255,255,.015)' }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', mb: 7 }}>
-            <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>The Solution</Typography>
-            <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '2rem', md: '2.8rem' }, lineHeight: 1.2, mb: 2 }}>Kosmos Connect Live 1.0</Typography>
-            <Typography sx={{ color: 'rgba(255,255,255,.6)', fontSize: '1rem', maxWidth: 620, mx: 'auto', lineHeight: 1.8 }}>A fully autonomous multi-spectral observatory in LEO. Powered by a 120mm scientific-grade telescope, UV/NIR imaging, precision pointing, and real-time orbital processing. Planned launch Q1 2028.</Typography>
+            <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>The Observatory</Typography>
+            <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '2rem', md: '2.8rem' }, lineHeight: 1.2, mb: 2 }}>4 Types of Telescopes. 8 CubeSats constilations.</Typography>
+            <Typography sx={{ color: 'rgba(255,255,255,.6)', fontSize: '1rem', maxWidth: 660, mx: 'auto', lineHeight: 1.8 }}>We are planning to send a 6U–12U CubeSat carrying four scientific-grade instruments — covering Optical, UV/NIR, X-Ray, and Gamma-Ray wavelengths — into low Earth orbit at ~550km altitude. Planned launch Q1 2028.</Typography>
+          </Box>
+          <Grid container spacing={3}>
+            {telescopes.map((t, i) => (
+              <Grid item xs={12} sm={6} md={3} key={i}>
+                <GlassCard sx={{ borderColor: `${t.color}25` }}>
+                  <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg,transparent,${t.color},transparent)` }} />
+                  <Box sx={{ width: 52, height: 52, borderRadius: '14px', background: `linear-gradient(135deg,${t.color}25,${t.color}15)`, border: `1px solid ${t.color}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2, color: t.color }}>{t.icon}</Box>
+                  <Typography sx={{ color: t.color, fontWeight: 800, fontSize: '0.72rem', letterSpacing: '2.5px', mb: 0.5 }}>{t.band}</Typography>
+                  <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', mb: 1.5 }}>{t.spec}</Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,.55)', fontSize: '0.83rem', lineHeight: 1.7, mb: 2 }}>{t.desc}</Typography>
+                  <Box sx={{ borderTop: '1px solid rgba(255,255,255,.06)', pt: 1.5 }}>
+                    {t.science.map((s, j) => (
+                      <Box key={j} sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.6 }}>
+                        <Box sx={{ width: 4, height: 4, borderRadius: '50%', background: t.color, flexShrink: 0 }} />
+                        <Typography sx={{ color: 'rgba(255,255,255,.5)', fontSize: '0.78rem' }}>{s}</Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </GlassCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* CAPABILITIES */}
+      <Box sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 } }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: 7 }}>
+            <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>Platform Capabilities</Typography>
+            <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '2rem', md: '2.8rem' }, lineHeight: 1.2 }}>Intelligence at the Speed of Light</Typography>
           </Box>
           <Grid container spacing={3}>
             {capabilities.map((cap, i) => (
@@ -265,14 +304,14 @@ const Home: FC = () => {
         </Container>
       </Box>
 
-      {/* EARTH NIGHT — full-width image section */}
+      {/* NEBULA IMAGE — astronomy science section */}
       <Box sx={{ position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden' }}>
-        <Box component="img" src="/assets/images/earth-night.jpg" alt="Earth city lights from orbit" sx={{ width: '100%', height: { xs: 280, md: 420 }, objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
-        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.6) 0%,rgba(2,8,24,0.2) 30%,rgba(2,8,24,0.2) 70%,rgba(2,8,24,0.8) 100%)' }} />
+        <Box component="img" src="/assets/images/earth-night.jpg" alt="Stars from orbit" sx={{ width: '100%', height: { xs: 280, md: 420 }, objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.6) 0%,rgba(2,8,24,0.15) 30%,rgba(2,8,24,0.15) 70%,rgba(2,8,24,0.8) 100%)' }} />
         <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', px: 2 }}>
-          <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>What You'll See</Typography>
-          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.8rem', md: '3rem' }, lineHeight: 1.15, mb: 2, textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}>City Lights.<br />Continents. Storms.<br /><span style={{ color: '#00B4D8' }}>Live.</span></Typography>
-          <Typography sx={{ color: 'rgba(255,255,255,.75)', fontSize: { xs: '0.9rem', md: '1.05rem' }, maxWidth: 520, lineHeight: 1.7, textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>Our orbital telescope streams real-time multi-spectral imagery of Earth — visible, UV, near-infrared, and beyond.</Typography>
+          <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>4 Spectral Channels · One Satellite</Typography>
+          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.8rem', md: '3rem' }, lineHeight: 1.15, mb: 2, textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}>Asteroids. Nebulae.<br />Gamma-Ray Bursts.<br /><span style={{ color: '#00B4D8' }}>Live from LEO.</span></Typography>
+          <Typography sx={{ color: 'rgba(255,255,255,.75)', fontSize: { xs: '0.9rem', md: '1.05rem' }, maxWidth: 580, lineHeight: 1.7, textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>Our 6U–12U CubeSat carries four scientific instruments — Optical, UV/NIR, X-Ray, and Gamma-Ray — delivering multi-spectral astronomy data from low Earth orbit, bookable by anyone.</Typography>
         </Box>
       </Box>
 

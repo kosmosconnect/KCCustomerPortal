@@ -50,10 +50,10 @@ const Features: FC = () => {
             <Typography sx={{ color: '#00B4D8', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '2px' }}>KOSMOS CONNECT LIVE 1.0 · FEATURES</Typography>
           </Box>
           <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', sm: '3.5rem', md: '5rem' }, fontWeight: 900, color: '#fff', lineHeight: 1.05, letterSpacing: '-2px', mb: 3, animation: `${fadeUp} 0.9s 0.1s ease both` }}>
-            A Complete<br /><GradText>Space Observatory</GradText><br />in Your Pocket
+            4 Telescopes.<br /><GradText>One Orbital</GradText><br />Observatory.
           </Typography>
           <Typography sx={{ fontSize: { xs: '1rem', md: '1.2rem' }, color: 'rgba(255,255,255,.65)', maxWidth: 660, mx: 'auto', mb: 5, lineHeight: 1.8, animation: `${fadeUp} 1s 0.2s ease both` }}>
-            From a 6U–12U CubeSat with multi-spectral telescopes to AI-powered analytics and immersive delivery platforms — everything you need to explore the universe, live from orbit.
+            We are planning to send a 6U–12U CubeSat carrying four scientific-grade instruments into low Earth orbit — covering Optical, UV/NIR, X-Ray, and Gamma-Ray wavelengths for real astronomy science, SSA monitoring, and education.
           </Typography>
           <PrimaryBtn endIcon={<ArrowForward />} onClick={() => navigate('/register')} sx={{ animation: `${fadeUp} 1s 0.3s ease both` }}>
             Reserve Observation Window
@@ -108,7 +108,7 @@ const Features: FC = () => {
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', mb: 7 }}>
             <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>AI & Analytics</Typography>
-            <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '2rem', md: '2.8rem' }, lineHeight: 1.2 }}>Intelligence at the Speed of Light</Typography>
+            <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '2rem', md: '2.8rem' }, lineHeight: 1.2 }}>AI-Powered Astronomy<br />at the Speed of Light</Typography>
           </Box>
           <Grid container spacing={3}>
             {aiFeatures.map((f, i) => (
