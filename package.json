@@ -1,0 +1,29 @@
+{
+  "name": "kosmos-connect-portal",
+  "version": "1.0.0",
+  "description": "Customer Portal for Kosmos Connect",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm start",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "test": "cd client && npm test",
+    "audit:fix": "npm audit fix"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-react-app": "^7.0.1",
+    "glob": "^10.3.10",
+    "prisma": "^6.1.0",
+    "react-scripts": "^5.0.1",
+    "rimraf": "^5.0.5"
+  }
+}

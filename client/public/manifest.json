@@ -1,0 +1,21 @@
+{
+  "short_name": "Cossmos Connect",
+  "name": "Cossmos Connect - Virtual Reality Experience",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "categories": ["virtual reality", "entertainment", "education"],
+  "description": "Your Gateway to Virtual Reality Experiences",
+  "dir": "ltr",
+  "lang": "en",
+  "prefer_related_applications": false
+}

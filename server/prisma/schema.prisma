@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String         @id @default(uuid())
+  email           String         @unique
+  password        String
+  firstName       String
+  lastName        String
+  stripeCustomerId String?       @unique
+  accessLevel     String         @default("free")
+  subscription    Subscription?
+  payments        Payment[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  @@map("users")
+}
+
+enum SubscriptionStatus {
+  active
+  canceled
+  past_due
+  incomplete
+}
+
+model Subscription {
+  id                  String            @id @default(uuid())
+  userId              String            @unique
+  user                User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripePriceId       String
+  stripeSubscriptionId String           @unique
+  status              SubscriptionStatus @default(incomplete)
+  currentPeriodStart  DateTime
+  currentPeriodEnd    DateTime
+  canceledAt          DateTime?
+  payments            Payment[]
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  @@map("subscriptions")
+}
+
+enum PaymentStatus {
+  succeeded
+  failed
+  pending
+}
+
+model Payment {
+  id              String        @id @default(uuid())
+  userId          String
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionId  String?
+  subscription    Subscription? @relation(fields: [subscriptionId], references: [id])
+  stripeInvoiceId String        @unique
+  amount          Int
+  currency        String
+  status          PaymentStatus
+  failureReason   String?
+  paidAt          DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("payments")
+}
