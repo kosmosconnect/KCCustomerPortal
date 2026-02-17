@@ -24,7 +24,7 @@ const LayoutRoot = styled(Box)({
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(180deg, rgba(2,8,24,0.82) 0%, rgba(2,8,24,0.75) 30%, rgba(2,8,24,0.85) 70%, rgba(2,8,24,0.95) 100%)',
+    background: 'linear-gradient(180deg, rgba(2,8,24,0.55) 0%, rgba(2,8,24,0.65) 30%, rgba(2,8,24,0.78) 60%, rgba(2,8,24,0.92) 100%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -38,6 +38,7 @@ const MainContent = styled(Box)({
   flex: 1,
   overflow: 'auto',
   paddingTop: '0px',
+  zIndex: 1,
   '&::-webkit-scrollbar': {
     width: '8px',
     height: '8px',
