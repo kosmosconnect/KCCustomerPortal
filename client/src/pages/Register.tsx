@@ -15,7 +15,6 @@ import { styled, alpha } from '@mui/material/styles';
 import {
   Visibility,
   VisibilityOff,
-  RocketLaunch,
   Email,
   Lock,
   Person,
@@ -31,18 +30,19 @@ const StyledContainer = styled(Container)({
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: '100vh',
-  padding: '24px'
+  padding: '40px 20px',
+  position: 'relative',
 });
 
 const GlassCard = styled(Box)({
-  background: 'rgba(11, 19, 64, 0.7)',
-  backdropFilter: 'blur(20px)',
+  background: 'radial-gradient(circle at 20% 20%, rgba(0,180,216,0.16), transparent 40%), radial-gradient(circle at 80% 10%, rgba(157,78,221,0.22), transparent 42%), rgba(2, 8, 24, 0.78)',
+  backdropFilter: 'blur(24px)',
   borderRadius: '24px',
   padding: '48px',
   width: '100%',
-  maxWidth: '680px',
-  border: '1px solid rgba(157, 78, 221, 0.2)',
-  boxShadow: '0 8px 32px rgba(157, 78, 221, 0.1)',
+  maxWidth: '720px',
+  border: '1px solid rgba(0, 180, 216, 0.35)',
+  boxShadow: '0 20px 80px rgba(0, 180, 216, 0.25), 0 8px 32px rgba(2, 8, 24, 0.65)',
   position: 'relative',
   overflow: 'hidden',
   '&::before': {
@@ -52,49 +52,71 @@ const GlassCard = styled(Box)({
     left: 0,
     right: 0,
     height: '2px',
-    background: 'linear-gradient(90deg, rgba(157, 78, 221, 0), rgba(157, 78, 221, 0.5), rgba(157, 78, 221, 0))',
+    background: 'linear-gradient(90deg, rgba(157,78,221,0), rgba(0,180,216,0.85), rgba(157,78,221,0))',
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.05), transparent 50%)',
+    pointerEvents: 'none',
   },
 });
 
 const StyledTextField = styled(TextField)({
   '& .MuiOutlinedInput-root': {
     color: '#FFFFFF',
-    backgroundColor: 'rgba(157, 78, 221, 0.1)',
-    borderRadius: '12px',
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderRadius: '14px',
     '& fieldset': {
-      borderColor: 'rgba(157, 78, 221, 0.2)',
+      borderColor: 'rgba(255,255,255,0.14)',
     },
     '&:hover fieldset': {
-      borderColor: 'rgba(157, 78, 221, 0.4)',
+      borderColor: 'rgba(0, 180, 216, 0.5)',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#9D4EDD',
+      borderColor: '#00B4D8',
+      boxShadow: '0 0 0 1px rgba(0,180,216,0.4), 0 10px 30px rgba(0,180,216,0.2)',
     },
   },
   '& .MuiInputLabel-root': {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(255, 255, 255, 0.65)',
+    fontSize: '0.9rem',
+    letterSpacing: '0.2px',
   },
   '& .MuiInputAdornment-root': {
-    color: 'rgba(255, 255, 255, 0.7)',
+    color: 'rgba(255, 255, 255, 0.8)',
+  },
+  '& .MuiInputBase-input': {
+    padding: '14px 14px',
+    fontWeight: 600,
+    letterSpacing: '0.2px',
+    color: '#F8FAFC',
+  },
+  '& input:-webkit-autofill': {
+    WebkitBoxShadow: '0 0 0 1000px rgba(255,255,255,0.04) inset',
+    WebkitTextFillColor: '#F8FAFC',
+    caretColor: '#F8FAFC',
   },
   marginBottom: '20px',
 });
 
 const GlowingButton = styled(Button)({
-  background: 'linear-gradient(135deg, #9D4EDD 0%, rgba(0, 180, 216, 0.8) 100%)',
+  background: 'linear-gradient(135deg, #2563EB 0%, #00B4D8 55%, #9D4EDD 100%)',
   color: '#FFFFFF',
-  padding: '12px 24px',
-  borderRadius: '12px',
+  padding: '14px 26px',
+  borderRadius: '14px',
   fontSize: '1rem',
-  fontWeight: 600,
+  fontWeight: 700,
   textTransform: 'none',
-  boxShadow: '0 4px 20px rgba(157, 78, 221, 0.4)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  letterSpacing: '0.3px',
+  boxShadow: '0 10px 32px rgba(0, 180, 216, 0.25)',
+  border: '1px solid rgba(255, 255, 255, 0.12)',
   position: 'relative',
   overflow: 'hidden',
   '&:hover': {
-    background: 'linear-gradient(135deg, #9D4EDD 20%, rgba(0, 180, 216, 0.9) 100%)',
-    boxShadow: '0 6px 24px rgba(157, 78, 221, 0.6)',
+    background: 'linear-gradient(135deg, #1D4ED8 0%, #00B4D8 50%, #9D4EDD 100%)',
+    boxShadow: '0 12px 36px rgba(0, 180, 216, 0.35)',
     transform: 'translateY(-1px)',
   },
   '&::after': {
@@ -104,9 +126,9 @@ const GlowingButton = styled(Button)({
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+    background: 'linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.22), transparent)',
     transform: 'translateX(-100%)',
-    transition: 'transform 0.6s ease',
+    transition: 'transform 0.65s ease',
   },
   '&:hover::after': {
     transform: 'translateX(100%)',
@@ -118,11 +140,36 @@ const StyledHeaderBox = styled(Box)(({ theme }) => ({
   marginBottom: theme.spacing(4)
 }));
 
-const StyledRocketIcon = styled(RocketLaunch)(({ theme }) => ({
-  fontSize: 48,
-  color: theme.palette.primary.main,
-  marginBottom: theme.spacing(2)
-}));
+const LogoMark = styled('img')({
+  width: 80,
+  height: 80,
+  objectFit: 'contain',
+  marginBottom: 4,
+  filter: 'drop-shadow(0 6px 18px rgba(0,180,216,0.45))',
+});
+
+const BrandText = styled(Typography)({
+  color: '#A5B4FC',
+  letterSpacing: '2.6px',
+  fontSize: '0.78rem',
+  fontWeight: 700,
+  textTransform: 'uppercase',
+  marginBottom: 8,
+});
+
+const ComingSoonBadge = styled(Box)({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: 8,
+  padding: '8px 12px',
+  borderRadius: '12px',
+  background: 'rgba(0, 180, 216, 0.12)',
+  border: '1px solid rgba(0, 180, 216, 0.35)',
+  color: '#E5E7EB',
+  fontWeight: 600,
+  letterSpacing: '0.4px',
+  marginTop: 4,
+});
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.common.white,
@@ -191,13 +238,19 @@ const Register: React.FC = () => {
       <StyledContainer>
         <GlassCard>
           <StyledHeaderBox>
-            <StyledRocketIcon />
+            <LogoMark src="/logo.png" alt="Kosmos Connect" />
+            <BrandText>KOSMOS CONNECT</BrandText>
             <StyledTitle variant="h4">
-              Join the Cosmos
+              Join Kosmos Connect Live
             </StyledTitle>
             <StyledSubtitle variant="body1">
               Create your account to start exploring
             </StyledSubtitle>
+            <ComingSoonBadge>
+              <span>Coming Soon</span>
+              <span>·</span>
+              <span>First Light 2028 Q1</span>
+            </ComingSoonBadge>
           </StyledHeaderBox>
 
           {error && (
