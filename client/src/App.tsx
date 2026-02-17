@@ -40,6 +40,9 @@ const App: FC = () => {
           <WebSocketProvider>
             <Routes>
               {/* Public Routes */}
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+              </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
 
@@ -51,7 +54,6 @@ const App: FC = () => {
                   </ProtectedRoute>
                 }
               >
-                <Route path="/" element={<Home />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/data-visualization" element={<DataVisualization />} />
                 <Route path="/documentation" element={<Documentation />} />
