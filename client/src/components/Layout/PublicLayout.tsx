@@ -11,6 +11,23 @@ const LayoutRoot = styled(Box)({
   minHeight: '100vh',
   width: '100%',
   background: '#020818',
+  backgroundImage: 'url(/assets/images/space-bg.jpg)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundAttachment: 'fixed',
+  backgroundRepeat: 'no-repeat',
+  position: 'relative',
+  '&::before': {
+    content: '""',
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'linear-gradient(180deg, rgba(2,8,24,0.82) 0%, rgba(2,8,24,0.75) 30%, rgba(2,8,24,0.85) 70%, rgba(2,8,24,0.95) 100%)',
+    pointerEvents: 'none',
+    zIndex: 0,
+  },
 });
 
 const MainContent = styled(Box)({

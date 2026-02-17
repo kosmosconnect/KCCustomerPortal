@@ -15,7 +15,8 @@ import {
 } from '@mui/icons-material';
 
 const FooterRoot = styled(Box)({
-  background: '#020818',
+  background: 'rgba(2,8,24,0.6)',
+  backdropFilter: 'blur(12px)',
   borderTop: '1px solid rgba(0,180,216,0.15)',
   marginTop: 'auto',
   padding: '64px 0 24px',

@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { Box, Typography, Button, Grid, Container, Stack } from '@mui/material';
 import { keyframes, styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import type { SxProps, Theme } from '@mui/material';
 import { ArrowForward, Shield, Satellite, Radar, School, Visibility, Cloud, Speed, Public } from '@mui/icons-material';
 
 const float = keyframes`0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}`;
@@ -13,7 +12,7 @@ const fadeUp = keyframes`0%{opacity:0;transform:translateY(32px)}100%{opacity:1;
 const orbitSpin = keyframes`0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}`;
 const scanAnim = keyframes`0%{top:-2px}100%{top:100%}`;
 
-const Root = styled(Box)({ background: '#020818', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative' });
+const Root = styled(Box)({ background: 'transparent', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative', zIndex: 1 });
 const GradText = styled('span')({ background: 'linear-gradient(135deg,#9D4EDD 0%,#00B4D8 60%,#9D4EDD 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: `${shimmer} 4s linear infinite` });
 const GlassCard = styled(Box)({
   background: 'rgba(255,255,255,0.03)',
@@ -74,21 +73,17 @@ const roadmap: RoadmapStep[] = [
   { phase: '4', label: 'Commercial "Live from Orbit"', period: 'Q1–Q2 2028', items: ['Minute Booking Windows', 'Target-of-Opportunity Shows', 'First-Light Events', 'Full Commercial Ops'] },
 ];
 
-const fixedBgSx: SxProps<Theme> = { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' };
-
 const Home: FC = () => {
   const navigate = useNavigate();
   const stars = Array.from({ length: 80 }, (_, i) => ({ id: i, size: Math.random() * 2.5 + 0.5, top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, delay: `${Math.random() * 5}s` }));
 
   return (
     <Root>
-      {/* Starfield */}
-      <Box sx={fixedBgSx}>
+      {/* Starfield twinkle overlay */}
+      <Box style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
         {stars.map(s => (
-          <Box key={s.id} sx={{ position: 'absolute', width: s.size, height: s.size, borderRadius: '50%', background: '#fff', top: s.top, left: s.left, animation: `${twinkle} 3s ${s.delay} ease-in-out infinite` } as any} />
+          <Box key={s.id} style={{ position: 'absolute', width: s.size, height: s.size, borderRadius: '50%', background: '#fff', top: s.top, left: s.left, animation: `${twinkle} 3s ${s.delay} ease-in-out infinite` }} />
         ))}
-        <Box sx={{ position: 'absolute', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(157,78,221,.12) 0%,transparent 70%)', top: '-10%', left: '-10%', filter: 'blur(40px)' }} />
-        <Box sx={{ position: 'absolute', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle,rgba(0,180,216,.10) 0%,transparent 70%)', bottom: '10%', right: '-5%', filter: 'blur(40px)' }} />
       </Box>
 
       {/* HERO */}

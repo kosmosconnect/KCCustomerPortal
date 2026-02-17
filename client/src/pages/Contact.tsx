@@ -7,7 +7,7 @@ const shimmer = keyframes`0%{background-position:-200% center}100%{background-po
 const fadeUp = keyframes`0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:translateY(0)}`;
 const pulse = keyframes`0%,100%{box-shadow:0 0 0 0 rgba(0,180,216,.4)}70%{box-shadow:0 0 0 10px rgba(0,180,216,0)}`;
 
-const Root = styled(Box)({ background: '#020818', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative' });
+const Root = styled(Box)({ background: 'transparent', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative', zIndex: 1 });
 const GradText = styled('span')({ background: 'linear-gradient(135deg,#9D4EDD 0%,#00B4D8 60%,#9D4EDD 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: `${shimmer} 4s linear infinite` });
 
 const StyledTextField = styled(TextField)({
@@ -79,12 +79,6 @@ const Contact: FC = () => {
 
   return (
     <Root>
-      {/* Nebula bg */}
-      <Box sx={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        <Box sx={{ position: 'absolute', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(157,78,221,.1) 0%,transparent 70%)', top: '-10%', right: '-5%', filter: 'blur(60px)' }} />
-        <Box sx={{ position: 'absolute', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle,rgba(0,180,216,.08) 0%,transparent 70%)', bottom: '10%', left: '-5%', filter: 'blur(50px)' }} />
-      </Box>
-
       {/* HERO */}
       <Box sx={{ position: 'relative', zIndex: 1, pt: { xs: 14, md: 18 }, pb: { xs: 8, md: 12 }, textAlign: 'center', px: 2 }}>
         <Container maxWidth="lg">

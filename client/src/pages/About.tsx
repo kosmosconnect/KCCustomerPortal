@@ -9,7 +9,7 @@ const fadeUp = keyframes`0%{opacity:0;transform:translateY(28px)}100%{opacity:1;
 const pulse = keyframes`0%,100%{box-shadow:0 0 0 0 rgba(0,180,216,.4)}70%{box-shadow:0 0 0 10px rgba(0,180,216,0)}`;
 const float = keyframes`0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}`;
 
-const Root = styled(Box)({ background: '#020818', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative' });
+const Root = styled(Box)({ background: 'transparent', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative', zIndex: 1 });
 const GradText = styled('span')({ background: 'linear-gradient(135deg,#9D4EDD 0%,#00B4D8 60%,#9D4EDD 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: `${shimmer} 4s linear infinite` });
 const PrimaryBtn = styled(Button)({ background: '#2563EB', color: '#fff', padding: '13px 32px', borderRadius: '50px', textTransform: 'none', fontWeight: 700, fontSize: '0.95rem', boxShadow: '0 8px 32px rgba(37,99,235,.4)', transition: 'all .3s', '&:hover': { background: '#1d4ed8', transform: 'translateY(-2px)', boxShadow: '0 12px 40px rgba(37,99,235,.55)' } });
 
@@ -36,12 +36,6 @@ const About: FC = () => {
 
   return (
     <Root>
-      {/* Nebula bg */}
-      <Box sx={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 0 } as any}>
-        <Box sx={{ position: 'absolute', width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle,rgba(157,78,221,.1) 0%,transparent 70%)', top: '-15%', right: '-10%', filter: 'blur(60px)' }} />
-        <Box sx={{ position: 'absolute', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle,rgba(0,180,216,.08) 0%,transparent 70%)', bottom: '5%', left: '-5%', filter: 'blur(50px)' }} />
-      </Box>
-
       {/* HERO */}
       <Box sx={{ position: 'relative', zIndex: 1, pt: { xs: 14, md: 18 }, pb: { xs: 8, md: 12 }, textAlign: 'center', px: 2 }}>
         <Container maxWidth="lg">
