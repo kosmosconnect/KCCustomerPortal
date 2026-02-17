@@ -10,7 +10,7 @@ const LayoutRoot = styled(Box)({
   flexDirection: 'column',
   minHeight: '100vh',
   width: '100%',
-  background: `linear-gradient(135deg, rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.85))`,
+  background: '#020818',
 });
 
 const MainContent = styled(Box)({
@@ -20,6 +20,7 @@ const MainContent = styled(Box)({
   width: '100%',
   flex: 1,
   overflow: 'auto',
+  paddingTop: '0px',
   '&::-webkit-scrollbar': {
     width: '8px',
     height: '8px',

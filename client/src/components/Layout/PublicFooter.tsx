@@ -15,12 +15,12 @@ import {
 } from '@mui/icons-material';
 
 const FooterRoot = styled(Box)({
-  background: 'linear-gradient(180deg, rgba(11, 19, 64, 0.5) 0%, rgba(11, 19, 64, 0.8) 100%)',
-  backdropFilter: 'blur(10px)',
-  borderTop: '1px solid rgba(157, 78, 221, 0.2)',
+  background: '#020818',
+  borderTop: '1px solid rgba(0,180,216,0.15)',
   marginTop: 'auto',
-  padding: '60px 0 20px',
-  color: 'rgba(255, 255, 255, 0.8)',
+  padding: '64px 0 24px',
+  color: 'rgba(255,255,255,0.8)',
+  position: 'relative',
 });
 
 const FooterContent = styled(Container)({
@@ -78,10 +78,10 @@ const LogoContainer = styled(Box)({
 });
 
 const LogoText = styled(Typography)({
-  background: 'linear-gradient(90deg, #9D4EDD, #00B4D8)',
+  background: 'linear-gradient(90deg,#fff,#00B4D8)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
-  fontWeight: 700,
+  fontWeight: 800,
   fontSize: '1.3rem',
 });
 
@@ -93,7 +93,7 @@ const Tagline = styled(Typography)({
 });
 
 const BottomBar = styled(Box)({
-  borderTop: '1px solid rgba(157, 78, 221, 0.1)',
+  borderTop: '1px solid rgba(255,255,255,0.06)',
   paddingTop: '20px',
   display: 'flex',
   justifyContent: 'space-between',
@@ -119,11 +119,13 @@ const PublicFooter: React.FC = () => {
           {/* Brand Section */}
           <FooterSection>
             <LogoContainer>
-              <img src="/logo.png" alt="Kosmos Connect" height="32" />
+              <Box sx={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(135deg,#9D4EDD,#00B4D8)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 12px rgba(0,180,216,.4)' }}>
+                <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: '0.9rem', lineHeight: 1 }}>K</Typography>
+              </Box>
               <LogoText>Kosmos Connect</LogoText>
             </LogoContainer>
             <Tagline>
-              Global Planetary Defense & Space Monitoring. World's First Nano Observatory-as-a-Service.
+              World's First Nano Observatory-as-a-Service. Live multi-spectral orbital telescope access for everyone.
             </Tagline>
             <Stack direction="row" spacing={1}>
               <SocialIcon href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">
@@ -174,7 +176,7 @@ const PublicFooter: React.FC = () => {
 
         <BottomBar>
           <Copyright>
-            © 2025 Kosmos Connect. All Rights Reserved.
+            © 2026 Kosmos Connect. All Rights Reserved.
           </Copyright>
           <Stack direction="row" spacing={2}>
             <FooterLink href="#">Privacy Policy</FooterLink>
