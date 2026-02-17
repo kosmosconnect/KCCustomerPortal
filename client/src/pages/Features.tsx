@@ -2,12 +2,11 @@ import { FC } from 'react';
 import { Box, Typography, Button, Grid, Container, Stack } from '@mui/material';
 import { keyframes, styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { Satellite, Shield, School, Visibility, Cloud, Radar, ArrowForward, FlashOn, BubbleChart, Biotech } from '@mui/icons-material';
+import { Shield, School, Visibility, Cloud, Radar, ArrowForward, FlashOn, BubbleChart, Biotech } from '@mui/icons-material';
 
 const shimmer = keyframes`0%{background-position:-200% center}100%{background-position:200% center}`;
 const fadeUp = keyframes`0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:translateY(0)}`;
 const pulse = keyframes`0%,100%{box-shadow:0 0 0 0 rgba(0,180,216,.4)}70%{box-shadow:0 0 0 10px rgba(0,180,216,0)}`;
-const float = keyframes`0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}`;
 
 const Root = styled(Box)({ background: 'transparent', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative', zIndex: 1 });
 const GradText = styled('span')({ background: 'linear-gradient(135deg,#9D4EDD 0%,#00B4D8 60%,#9D4EDD 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: `${shimmer} 4s linear infinite` });
@@ -93,12 +92,25 @@ const Features: FC = () => {
             ))}
           </Grid>
 
-          {/* Satellite visual */}
+          {/* Rotating Earth visual */}
           <Box sx={{ textAlign: 'center', mt: 8 }}>
-            <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 120, height: 120, borderRadius: '50%', background: 'linear-gradient(135deg,rgba(157,78,221,.2),rgba(0,180,216,.2))', border: '2px solid rgba(0,180,216,.3)', boxShadow: '0 0 60px rgba(0,180,216,.2)', animation: `${float} 5s ease-in-out infinite` }}>
-              <Satellite sx={{ color: '#00B4D8', fontSize: '3.5rem' }} />
+            <Box
+              sx={{
+                position: 'relative',
+                width: 160,
+                height: 160,
+                mx: 'auto',
+                borderRadius: '50%',
+                overflow: 'hidden',
+                boxShadow: '0 0 80px rgba(0,180,216,.35), 0 0 60px rgba(0,180,216,.15)',
+                border: '1px solid rgba(0,180,216,.3)',
+                background: 'radial-gradient(circle at 30% 30%, rgba(0,180,216,.08), rgba(2,8,24,.9))',
+              }}
+            >
+              <Box component="img" src="/assets/images/Rotating_earth_animated_transparent.gif" alt="Rotating Earth" sx={{ width: '100%', height: '100%', objectFit: 'contain', background: 'transparent', position: 'relative', zIndex: 2 }} />
+              <Box sx={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,0,0,0) 45%, rgba(0,8,24,0.35) 80%, rgba(0,8,24,0.7) 100%)', zIndex: 1 }} />
             </Box>
-            <Typography sx={{ color: 'rgba(255,255,255,.4)', fontSize: '0.8rem', mt: 2, letterSpacing: '2px' }}>KOSMOS CONNECT LIVE 1.0 · LEO ORBIT · ~550KM ALTITUDE</Typography>
+            <Typography sx={{ color: 'rgba(255,255,255,.5)', fontSize: '0.78rem', mt: 2, letterSpacing: '2px' }}>KOSMOS CONNECT LIVE 1.0 · LEO ORBIT · ~550KM ALTITUDE</Typography>
           </Box>
         </Container>
       </Box>
