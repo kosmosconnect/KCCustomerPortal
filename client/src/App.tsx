@@ -17,6 +17,10 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Home from '@/pages/Home';
+import About from '@/pages/About';
+import Features from '@/pages/Features';
+import Pricing from '@/pages/Pricing';
+import Contact from '@/pages/Contact';
 import Dashboard from '@/pages/Dashboard';
 import DataVisualization from '@/pages/DataVisualization';
 import Documentation from '@/pages/Documentation';
@@ -43,6 +47,10 @@ const App: FC = () => {
               {/* Public Routes */}
               <Route path="/" element={<PublicLayout />}>
                 <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="features" element={<Features />} />
+                <Route path="pricing" element={<Pricing />} />
+                <Route path="contact" element={<Contact />} />
               </Route>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />

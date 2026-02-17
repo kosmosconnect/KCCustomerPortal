@@ -155,10 +155,10 @@ const PublicNavbar: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const navItems = [
-    { label: 'Features', path: '#features' },
-    { label: 'Pricing', path: '/subscription' },
-    { label: 'About', path: '#about' },
-    { label: 'Contact', path: '#contact' },
+    { label: 'Features', path: '/features' },
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -173,12 +173,7 @@ const PublicNavbar: React.FC = () => {
 
   const handleNavClick = (path: string) => {
     handleMobileMenuClose();
-    if (path.startsWith('#')) {
-      const element = document.querySelector(path);
-      element?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      navigate(path);
-    }
+    navigate(path);
   };
 
   return (
@@ -197,12 +192,6 @@ const PublicNavbar: React.FC = () => {
               <NavLink
                 key={item.path}
                 to={item.path}
-                onClick={(e) => {
-                  if (item.path.startsWith('#')) {
-                    e.preventDefault();
-                    handleNavClick(item.path);
-                  }
-                }}
               >
                 {item.label}
               </NavLink>

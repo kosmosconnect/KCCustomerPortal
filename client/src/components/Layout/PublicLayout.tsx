@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
 import PublicNavbar from './PublicNavbar';
+import PublicFooter from './PublicFooter';
 
 const LayoutRoot = styled(Box)({
   display: 'flex',
@@ -43,6 +44,7 @@ const PublicLayout: React.FC = () => {
       <MainContent>
         <Outlet />
       </MainContent>
+      <PublicFooter />
     </LayoutRoot>
   );
 };
