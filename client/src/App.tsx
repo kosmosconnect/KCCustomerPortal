@@ -8,6 +8,7 @@ import theme from '@/theme';
 
 // Components
 import Layout from '@/components/Layout/Layout';
+import PublicLayout from '@/components/Layout/PublicLayout';
 import ErrorBoundary from '@/components/common/ErrorBoundary';
 import { WebSocketProvider } from '@/contexts/WebSocketContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
@@ -40,7 +41,7 @@ const App: FC = () => {
           <WebSocketProvider>
             <Routes>
               {/* Public Routes */}
-              <Route path="/" element={<Layout />}>
+              <Route path="/" element={<PublicLayout />}>
                 <Route index element={<Home />} />
               </Route>
               <Route path="/login" element={<Login />} />
