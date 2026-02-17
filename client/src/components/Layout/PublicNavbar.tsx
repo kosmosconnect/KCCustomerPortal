@@ -67,27 +67,38 @@ const PublicNavbar: React.FC = () => {
               sx={{ display: 'flex', alignItems: 'center', gap: 1.5, textDecoration: 'none' }}
             >
               <Box
-                sx={{
-                  width: 36, height: 36, borderRadius: '50%',
-                  background: 'linear-gradient(135deg,#9D4EDD,#00B4D8)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  boxShadow: '0 0 16px rgba(0,180,216,0.5)',
-                }}
-              >
-                <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: '1rem', lineHeight: 1 }}>K</Typography>
+                component="img"
+                src="/logo.png"
+                alt="Kosmos Connect"
+                sx={{ height: { xs: 36, md: 42 }, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(0,180,216,0.5))' }}
+              />
+              <Box>
+                <Typography
+                  sx={{
+                    background: 'linear-gradient(90deg,#fff,#00B4D8)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontWeight: 800,
+                    fontSize: { xs: '1rem', md: '1.2rem' },
+                    letterSpacing: '-0.5px',
+                    lineHeight: 1.1,
+                  }}
+                >
+                  Kosmos Connect
+                </Typography>
+                <Typography
+                  sx={{
+                    color: '#00B4D8',
+                    fontWeight: 700,
+                    fontSize: { xs: '0.6rem', md: '0.68rem' },
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
+                    lineHeight: 1,
+                  }}
+                >
+                  Live 1.0
+                </Typography>
               </Box>
-              <Typography
-                sx={{
-                  background: 'linear-gradient(90deg,#fff,#00B4D8)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontWeight: 800,
-                  fontSize: { xs: '1.1rem', md: '1.35rem' },
-                  letterSpacing: '-0.5px',
-                }}
-              >
-                Kosmos Connect
-              </Typography>
             </Box>
 
             {/* Desktop Nav */}
