@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Box, Typography, Button, Grid, Container, Stack } from '@mui/material';
 import { keyframes, styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import type { SxProps, Theme } from '@mui/material';
 import { CheckCircle, ArrowForward } from '@mui/icons-material';
 
 const shimmer = keyframes`0%{background-position:-200% center}100%{background-position:200% center}`;
@@ -11,6 +12,19 @@ const pulse = keyframes`0%,100%{box-shadow:0 0 0 0 rgba(0,180,216,.4)}70%{box-sh
 const Root = styled(Box)({ background: 'transparent', minHeight: '100vh', width: '100%', overflowX: 'hidden', position: 'relative', zIndex: 1 });
 const GradText = styled('span')({ background: 'linear-gradient(135deg,#9D4EDD 0%,#00B4D8 60%,#9D4EDD 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: `${shimmer} 4s linear infinite` });
 const PrimaryBtn = styled(Button)({ background: '#2563EB', color: '#fff', padding: '13px 32px', borderRadius: '50px', textTransform: 'none', fontWeight: 700, fontSize: '0.95rem', boxShadow: '0 8px 32px rgba(37,99,235,.4)', transition: 'all .3s', '&:hover': { background: '#1d4ed8', transform: 'translateY(-2px)', boxShadow: '0 12px 40px rgba(37,99,235,.55)' } });
+const TierCard = styled(Box)<{ highlight?: boolean }>(({ highlight }) => ({
+  padding: '28px',
+  borderRadius: '24px',
+  background: highlight ? 'linear-gradient(135deg,rgba(157,78,221,.15),rgba(0,180,216,.12))' : 'rgba(255,255,255,.03)',
+  border: highlight ? '1px solid rgba(0,180,216,.4)' : '1px solid rgba(255,255,255,.08)',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'relative',
+  overflow: 'hidden',
+  transition: 'all .35s',
+  '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 24px 60px rgba(0,0,0,.5)', border: '1px solid rgba(0,180,216,.4)' },
+} as any));
 
 type Tier = { title: string; price: string; period: string; desc: string; features: string[]; highlight: boolean; cta: string };
 const tiers: Tier[] = [
@@ -62,13 +76,15 @@ const customers: Customer[] = [
   { emoji: '👨‍🔬', title: 'Individual Enthusiasts', desc: 'Amateur astronomers and space watchers with pay-as-you-go observation access.' },
 ];
 
+const heroSx: SxProps<Theme> = { position: 'relative', zIndex: 1, pt: { xs: 14, md: 18 }, pb: { xs: 8, md: 12 }, textAlign: 'center', px: 2 };
+
 const Pricing: FC = () => {
   const navigate = useNavigate();
 
   return (
     <Root>
       {/* HERO */}
-      <Box sx={{ position: 'relative', zIndex: 1, pt: { xs: 14, md: 18 }, pb: { xs: 8, md: 12 }, textAlign: 'center', px: 2 }}>
+      <Box sx={heroSx}>
         <Container maxWidth="lg">
           <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, background: 'rgba(0,180,216,.1)', border: '1px solid rgba(0,180,216,.3)', borderRadius: '50px', px: 2, py: 0.75, mb: 4, animation: `${fadeUp} 0.8s ease both` }}>
             <Box sx={{ width: 8, height: 8, borderRadius: '50%', background: '#00B4D8', animation: `${pulse} 2s ease-in-out infinite` }} />
@@ -89,21 +105,7 @@ const Pricing: FC = () => {
           <Grid container spacing={3}>
             {tiers.map((tier, i) => (
               <Grid item xs={12} sm={6} md={3} key={i}>
-                <Box sx={{
-                  p: 3.5,
-                  borderRadius: '24px',
-                  background: tier.highlight
-                    ? 'linear-gradient(135deg,rgba(157,78,221,.15),rgba(0,180,216,.12))'
-                    : 'rgba(255,255,255,.03)',
-                  border: tier.highlight ? '1px solid rgba(0,180,216,.4)' : '1px solid rgba(255,255,255,.08)',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'all .35s',
-                  '&:hover': { transform: 'translateY(-8px)', boxShadow: '0 24px 60px rgba(0,0,0,.5)', border: '1px solid rgba(0,180,216,.4)' },
-                }}>
+                <TierCard highlight={tier.highlight}>
                   {tier.highlight && (
                     <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg,#9D4EDD,#00B4D8)' }} />
                   )}
@@ -128,7 +130,7 @@ const Pricing: FC = () => {
                   <PrimaryBtn fullWidth onClick={() => navigate(tier.cta === 'Get Started' ? '/register' : '/contact')}>
                     {tier.cta}
                   </PrimaryBtn>
-                </Box>
+                </TierCard>
               </Grid>
             ))}
           </Grid>
