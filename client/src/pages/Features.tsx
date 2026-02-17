@@ -61,6 +61,15 @@ const Features: FC = () => {
         </Container>
       </Box>
 
+      {/* ANDROMEDA GALAXY — image strip */}
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%', height: { xs: 200, md: 300 }, overflow: 'hidden' }}>
+        <Box component="img" src="/assets/images/stars-milkyway.jpg" alt="Andromeda Galaxy" sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.65) 0%,rgba(2,8,24,0.05) 50%,rgba(2,8,24,0.65) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.4rem', md: '2.2rem' }, letterSpacing: '-1px', textShadow: '0 2px 20px rgba(0,0,0,0.8)', textAlign: 'center' }}>Andromeda Galaxy · 2.537 Million Light Years · <span style={{ color: '#00B4D8' }}>Captured from LEO</span></Typography>
+        </Box>
+      </Box>
+
       {/* PAYLOAD SPECS */}
       <Box sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 }, background: 'rgba(255,255,255,.015)' }}>
         <Container maxWidth="lg">

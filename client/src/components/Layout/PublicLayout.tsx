@@ -11,7 +11,7 @@ const LayoutRoot = styled(Box)({
   minHeight: '100vh',
   width: '100%',
   background: '#020818',
-  backgroundImage: 'url(/assets/images/space-bg.jpg)',
+  backgroundImage: 'url(/assets/images/hero-galaxy.jpg)',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundAttachment: 'fixed',

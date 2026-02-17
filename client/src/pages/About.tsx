@@ -52,6 +52,16 @@ const About: FC = () => {
         </Container>
       </Box>
 
+      {/* ASTRONAUT IMAGE STRIP */}
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%', height: { xs: 240, md: 380 }, overflow: 'hidden' }}>
+        <Box component="img" src="/assets/images/deep-space.jpg" alt="Astronaut floating above Earth" sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.55) 0%,rgba(2,8,24,0.1) 40%,rgba(2,8,24,0.1) 60%,rgba(2,8,24,0.7) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', px: 2 }}>
+          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.6rem', md: '2.8rem' }, lineHeight: 1.15, textShadow: '0 2px 20px rgba(0,0,0,0.9)', mb: 1.5 }}>Democratising Space<br /><span style={{ color: '#00B4D8' }}>One Orbit at a Time</span></Typography>
+          <Typography sx={{ color: 'rgba(255,255,255,.75)', fontSize: { xs: '0.85rem', md: '1rem' }, maxWidth: 500, lineHeight: 1.7, textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>Founded in 2023 · Hyderabad, India · Building the world's first Nano Observatory-as-a-Service</Typography>
+        </Box>
+      </Box>
+
       {/* MISSION & VISION */}
       <Box sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 }, background: 'rgba(255,255,255,.015)' }}>
         <Container maxWidth="lg">

@@ -95,6 +95,16 @@ const Contact: FC = () => {
         </Container>
       </Box>
 
+      {/* SPACEWALK IMAGE STRIP */}
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%', height: { xs: 220, md: 320 }, overflow: 'hidden' }}>
+        <Box component="img" src="/assets/images/satellite-orbit.jpg" alt="Astronaut spacewalk" sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.6) 0%,rgba(2,8,24,0.1) 50%,rgba(2,8,24,0.7) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', px: 2 }}>
+          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.5rem', md: '2.4rem' }, textShadow: '0 2px 20px rgba(0,0,0,0.9)', lineHeight: 1.2 }}>We're Building the Future<br /><span style={{ color: '#00B4D8' }}>of Space Access</span></Typography>
+          <Typography sx={{ color: 'rgba(255,255,255,.75)', fontSize: { xs: '0.85rem', md: '1rem' }, mt: 1.5, textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>info@kosmosconnect.space</Typography>
+        </Box>
+      </Box>
+
       {/* CONTACT INFO CARDS */}
       <Box sx={{ position: 'relative', zIndex: 1, pb: { xs: 6, md: 8 } }}>
         <Container maxWidth="lg">

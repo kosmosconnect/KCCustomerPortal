@@ -123,6 +123,15 @@ const Home: FC = () => {
         </Container>
       </Box>
 
+      {/* EARTH FROM ORBIT — image strip */}
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%', height: { xs: 220, md: 340 }, overflow: 'hidden' }}>
+        <Box component="img" src="/assets/images/earth-orbit.jpg" alt="Earth from orbit" sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.7) 0%,rgba(2,8,24,0.1) 40%,rgba(2,8,24,0.1) 60%,rgba(2,8,24,0.7) 100%)' }} />
+        <Box sx={{ position: 'absolute', bottom: 24, left: 0, right: 0, textAlign: 'center' }}>
+          <Typography sx={{ color: 'rgba(255,255,255,.7)', fontSize: { xs: '0.8rem', md: '0.95rem' }, fontWeight: 500, letterSpacing: '3px', textTransform: 'uppercase' }}>Live Multi-Spectral View · Low Earth Orbit · 550km Altitude</Typography>
+        </Box>
+      </Box>
+
       {/* STATS */}
       <Box sx={{ position: 'relative', zIndex: 1, py: 5, borderTop: '1px solid rgba(255,255,255,.05)', borderBottom: '1px solid rgba(255,255,255,.05)', background: 'rgba(255,255,255,.01)' }}>
         <Container maxWidth="lg">
@@ -254,6 +263,17 @@ const Home: FC = () => {
             ))}
           </Stack>
         </Container>
+      </Box>
+
+      {/* EARTH NIGHT — full-width image section */}
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%', overflow: 'hidden' }}>
+        <Box component="img" src="/assets/images/earth-night.jpg" alt="Earth city lights from orbit" sx={{ width: '100%', height: { xs: 280, md: 420 }, objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.6) 0%,rgba(2,8,24,0.2) 30%,rgba(2,8,24,0.2) 70%,rgba(2,8,24,0.8) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', px: 2 }}>
+          <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '3px', textTransform: 'uppercase', mb: 2 }}>What You'll See</Typography>
+          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.8rem', md: '3rem' }, lineHeight: 1.15, mb: 2, textShadow: '0 2px 20px rgba(0,0,0,0.8)' }}>City Lights.<br />Continents. Storms.<br /><span style={{ color: '#00B4D8' }}>Live.</span></Typography>
+          <Typography sx={{ color: 'rgba(255,255,255,.75)', fontSize: { xs: '0.9rem', md: '1.05rem' }, maxWidth: 520, lineHeight: 1.7, textShadow: '0 1px 8px rgba(0,0,0,0.9)' }}>Our orbital telescope streams real-time multi-spectral imagery of Earth — visible, UV, near-infrared, and beyond.</Typography>
+        </Box>
       </Box>
 
       {/* CTA */}

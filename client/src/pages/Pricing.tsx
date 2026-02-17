@@ -99,6 +99,15 @@ const Pricing: FC = () => {
         </Container>
       </Box>
 
+      {/* COSMOS STARS IMAGE STRIP */}
+      <Box sx={{ position: 'relative', zIndex: 1, width: '100%', height: { xs: 200, md: 300 }, overflow: 'hidden' }}>
+        <Box component="img" src="/assets/images/cosmos-stars.jpg" alt="Milky Way night sky" sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(2,8,24,0.7) 0%,rgba(2,8,24,0.15) 50%,rgba(2,8,24,0.7) 100%)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', px: 2 }}>
+          <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: { xs: '1.5rem', md: '2.4rem' }, textShadow: '0 2px 20px rgba(0,0,0,0.9)', lineHeight: 1.2 }}>Book a Telescope Window<br /><span style={{ color: '#00B4D8' }}>Like Booking a Meeting Room</span></Typography>
+        </Box>
+      </Box>
+
       {/* PRICING TIERS */}
       <Box sx={{ position: 'relative', zIndex: 1, py: { xs: 4, md: 8 } }}>
         <Container maxWidth="lg">
