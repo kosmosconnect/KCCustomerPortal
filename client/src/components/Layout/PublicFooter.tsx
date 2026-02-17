@@ -120,10 +120,16 @@ const PublicFooter: React.FC = () => {
           {/* Brand Section */}
           <FooterSection>
             <LogoContainer>
-              <Box sx={{ width: 32, height: 32, borderRadius: '50%', background: 'linear-gradient(135deg,#9D4EDD,#00B4D8)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 12px rgba(0,180,216,.4)' }}>
-                <Typography sx={{ color: '#fff', fontWeight: 900, fontSize: '0.9rem', lineHeight: 1 }}>K</Typography>
+              <Box
+                component="img"
+                src="/logo.png"
+                alt="Kosmos Connect"
+                sx={{ height: 38, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(0,180,216,0.5))' }}
+              />
+              <Box>
+                <LogoText>Kosmos Connect</LogoText>
+                <Typography sx={{ color: '#00B4D8', fontWeight: 700, fontSize: '0.62rem', letterSpacing: '2px', textTransform: 'uppercase', lineHeight: 1, mt: 0.3 }}>Live 1.0</Typography>
               </Box>
-              <LogoText>Kosmos Connect</LogoText>
             </LogoContainer>
             <Tagline>
               World's First Nano Observatory-as-a-Service. Live multi-spectral orbital telescope access for everyone.
