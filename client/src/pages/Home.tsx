@@ -2,9 +2,8 @@ import { FC } from 'react';
 import { Box, Typography, Button, Grid, Container, Stack } from '@mui/material';
 import { keyframes, styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { ArrowForward, Shield, Satellite, Radar, School, Visibility, Cloud, Speed, Public } from '@mui/icons-material';
+import { ArrowForward, Shield, Radar, School, Visibility, Cloud, Speed, Public } from '@mui/icons-material';
 
-const float = keyframes`0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}`;
 const pulse = keyframes`0%,100%{box-shadow:0 0 0 0 rgba(0,180,216,.5)}70%{box-shadow:0 0 0 10px rgba(0,180,216,0)}`;
 const shimmer = keyframes`0%{background-position:-200% center}100%{background-position:200% center}`;
 const twinkle = keyframes`0%,100%{opacity:.15}50%{opacity:1}`;
@@ -107,8 +106,8 @@ const Home: FC = () => {
             THE UNIVERSE<br /><GradText>LIVE FROM ORBIT</GradText>
           </Typography>
 
-          <Typography sx={{ fontSize: { xs: '1rem', md: '1.2rem' }, color: 'rgba(255,255,255,.7)', maxWidth: 680, mx: 'auto', mb: 5, lineHeight: 1.8, animation: `${fadeUp} 1s 0.2s ease both` }}>
-            World's first <strong style={{ color: '#00B4D8' }}>Nano Observatory-as-a-Service</strong> — a fully autonomous multi-spectral observatory in low Earth orbit. Bookable like a calendar slot, accessible from any screen.
+          <Typography sx={{ fontSize: { xs: '1rem', md: '1.2rem' }, color: 'rgba(255,255,255,.7)', maxWidth: 720, mx: 'auto', mb: 5, lineHeight: 1.8, animation: `${fadeUp} 1s 0.2s ease both` }}>
+            World's first <strong style={{ color: '#00B4D8' }}>Nano Observatory-as-a-Service</strong> — eight orbital telescopes circling Earth (Optical, UV/NIR, X-Ray, Gamma) bookable like a calendar slot, accessible from any screen.
           </Typography>
 
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" alignItems="center" sx={{ animation: `${fadeUp} 1s 0.3s ease both` }}>
@@ -116,16 +115,47 @@ const Home: FC = () => {
             <OutlineBtn size="large" onClick={() => navigate('/features')}>Explore Features</OutlineBtn>
           </Stack>
 
-          {/* Orbit ring */}
-          <Box sx={{ position: 'relative', width: { xs: 200, md: 280 }, height: { xs: 200, md: 280 }, mx: 'auto', mt: 8, animation: `${fadeUp} 1s 0.4s ease both` }}>
-            <Box sx={{ position: 'absolute', inset: 0, borderRadius: '50%', border: '1px solid rgba(0,180,216,.2)', animation: `${orbitSpin} 20s linear infinite` }}>
-              <Box sx={{ position: 'absolute', top: -6, left: '50%', transform: 'translateX(-50%)', width: 12, height: 12, borderRadius: '50%', background: '#00B4D8', boxShadow: '0 0 12px #00B4D8' }} />
-            </Box>
-            <Box sx={{ position: 'absolute', inset: 24, borderRadius: '50%', border: '1px solid rgba(157,78,221,.2)', animation: `${orbitSpin} 14s linear infinite reverse` }}>
-              <Box sx={{ position: 'absolute', top: -5, left: '50%', transform: 'translateX(-50%)', width: 10, height: 10, borderRadius: '50%', background: '#9D4EDD', boxShadow: '0 0 10px #9D4EDD' }} />
-            </Box>
-            <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 72, height: 72, borderRadius: '50%', background: 'radial-gradient(circle,rgba(0,180,216,.3),rgba(157,78,221,.2))', boxShadow: '0 0 40px rgba(0,180,216,.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Satellite sx={{ color: '#00B4D8', fontSize: '2rem', animation: `${float} 4s ease-in-out infinite` }} />
+          {/* Orbital visualization: Earth */}
+          <Box sx={{ position: 'relative', width: { xs: 250, md: 320 }, height: { xs: 250, md: 320 }, mx: 'auto', mt: 8, animation: `${fadeUp} 1s 0.4s ease both`, overflow: 'visible' }}>
+            {/* rings */}
+            {[0, 1, 2].map((ring) => (
+              <Box
+                key={ring}
+                sx={{
+                  position: 'absolute',
+                  inset: `${ring * 10}px`,
+                  borderRadius: '50%',
+                  border: `1px solid rgba(0,180,216,${0.16 - ring * 0.03})`,
+                  backdropFilter: 'blur(3px)',
+                  animation: `${orbitSpin} ${22 - ring * 4}s linear infinite`,
+                  animationDirection: ring % 2 ? 'reverse' : 'normal',
+                  opacity: 0.7,
+                }}
+              />
+            ))}
+
+            {/* Earth center */}
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%,-50%)',
+                width: { xs: 190, md: 240 },
+                height: { xs: 190, md: 240 },
+                borderRadius: '50%',
+                overflow: 'hidden',
+                boxShadow: '0 0 60px rgba(0,180,216,.35), 0 0 90px rgba(0,180,216,.2)',
+                border: '1px solid rgba(0,180,216,.3)',
+              }}
+            >
+              <Box
+                component="img"
+                src="/assets/images/Rotating_earth_animated_transparent.gif"
+                alt="Rotating Earth"
+                sx={{ width: '100%', height: '100%', objectFit: 'contain', background: 'transparent', position: 'relative', zIndex: 2 }}
+              />
+              <Box sx={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,0,0,0) 45%, rgba(0,8,24,0.25) 75%, rgba(0,8,24,0.6) 100%)', zIndex: 1 }} />
             </Box>
           </Box>
         </Container>
