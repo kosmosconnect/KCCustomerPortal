@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   
   // Set base path for GitHub Pages
-  const base = mode === 'production' ? '/KCCustomerPortal/' : '/';
+  const base = mode === 'production' ? '/' : '/';
   
   return {
     base,
