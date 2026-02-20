@@ -76,7 +76,7 @@ const menuItems = [
   { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' },
   { text: 'Mission Control', icon: <RocketLaunch />, path: '/mission-control' },
   { text: 'Data Visualization', icon: <DataUsage />, path: '/data-visualization' },
-  { text: 'Kosmos Connect Live 1.0', icon: <Language />, path: '/live', external: true, externalUrl: 'https://live.kosmosconnect.space/' },
+  { text: 'Kosmos Connect Live 1.0', icon: <Language />, path: '/live', external: true, externalUrl: 'https://live.kosmosconnect.live/' },
   { text: 'Satellite Data', icon: <Satellite />, path: '/satellite-data' },
   { text: 'Space Science', icon: <Science />, path: '/space-science' },
   { text: 'VR Experience', icon: <VrpanoOutlined />, path: '/vr-experience' },
